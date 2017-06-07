@@ -1,0 +1,102 @@
+
+
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.IOException;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.WindowConstants;
+
+import com.teamdev.jxbrowser.chromium.Browser;
+import com.teamdev.jxbrowser.chromium.swing.BrowserView;
+
+
+
+
+
+
+public class ControladorSesionesPaciente implements ActionListener, MouseListener{
+  
+  JFrame frmDialogo;
+  public VentanaSesionesPaciente ventanaControlada;
+  public String usuarioPaciente;
+  public String usuarioMedico;
+  public String sesion;
+  public String[][] datosSesion = null;
+  
+  public ControladorSesionesPaciente (VentanaSesionesPaciente win){
+    ventanaControlada = win;
+    this.usuarioMedico = usuarioMedico;
+    this.usuarioPaciente = usuarioPaciente;
+  }
+
+  //Funci�n que indica las acciones que realizan los distintos objetos de la ventana
+  public void actionPerformed(ActionEvent e) {
+	  if (e.getSource().equals(ventanaControlada.btn_Sesiones_Altitud)){
+		  final Browser browser = new Browser();
+		  //browser.loadURL("https://www.google.com/maps/d/u/0/embed?mid=1D7MfSqkxD7hnLxXKbWpKVkUcCas");
+		   
+	       BrowserView browserView = new BrowserView(browser);
+	       ventanaControlada.panel_graficas.removeAll();
+	       browser.loadURL("File:///Users/alejandroabadmartinez/Desktop/ARCHIVOS%20ECLIPSE/Mapas2.0/mapa-generado.html");
+	       ventanaControlada.panel_graficas.add(browserView, BorderLayout.CENTER);
+			ventanaControlada.panel_graficas.validate();
+
+	       
+	       
+	       
+			
+	   }
+
+	  }
+	  
+  		
+
+		
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		public static void main(String[]args) throws IOException{	//crea la ventana de inicio
+		
+			VentanaSesionesPaciente mainframe=new VentanaSesionesPaciente();
+			ControladorSesionesPaciente mc=new ControladorSesionesPaciente(mainframe);
+			mainframe.addController(mc);
+			mainframe.crearVentana();
+
+
+		}
+}
